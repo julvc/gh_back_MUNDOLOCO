@@ -1,9 +1,7 @@
 import path from 'path';
 
 export default ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite');
-  const clientOnline = env('DATABASE_HOST', 'postgres');
-
+  const client = env('DATABASE_CLIENT', 'postgres'); // Cambiar a 'postgres' para el despliegue en Render
 
   const connections = {
     mysql: {
@@ -26,21 +24,12 @@ export default ({ env }) => {
     },
     postgres: {
       connection: {
-        connectionString: env('CONNECTION_STRING'),
         host: env('DATABASE_HOST', 'localhost'),
         port: env.int('DATABASE_PORT', 5432),
         database: env('DATABASE_NAME', 'strapi'),
         user: env('DATABASE_USER', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'cMkOpHale3d1pAGCb5ADoL3481xCH1VZ'),
-        ssl: env.bool('DATABASE_SSL', false) && {
-          key: env('DATABASE_SSL_KEY', undefined),
-          cert: env('DATABASE_SSL_CERT', undefined),
-          ca: env('DATABASE_SSL_CA', undefined),
-          capath: env('DATABASE_SSL_CAPATH', undefined),
-          cipher: env('DATABASE_SSL_CIPHER', undefined),
-          rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
-        },
-        debug: false,
+        password: env('DATABASE_PASSWORD'),
+        ssl: env.bool('DATABASE_SSL', false) ? { rejectUnauthorized: false } : false, // Desactiva la verificación de certificado
         schema: env('DATABASE_SCHEMA', 'public'),
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
