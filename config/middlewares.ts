@@ -46,7 +46,11 @@ module.exports = [
         name: "strapi::cors",
         config: {
             enabled: true,
-            origin: ["http://localhost:5173"], // Cambia al dominio de tu frontend
+            origin: [
+                "http://localhost:5173",  // Para desarrollo local
+                "https://julvc.github.io" // Para GitHub Pages
+            ],
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],
         },
     },
     "strapi::poweredBy",
