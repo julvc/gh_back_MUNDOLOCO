@@ -1,0 +1,95 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "blogs",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blogTitle": {
+      "type": "string"
+    },
+    "blogDesc": {
+      "type": "string"
+    },
+    "authorName": {
+      "type": "string"
+    },
+    "authorDesc": {
+      "type": "string"
+    },
+    "blogVideo": {
+      "type": "customField",
+      "customField": "plugin::video-field.video"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "blog"
+    },
+    "blogContentOne": {
+      "type": "richtext"
+    },
+    "blogContentTwo": {
+      "type": "richtext"
+    },
+    "blogContentThree": {
+      "type": "richtext"
+    },
+    "coverImg": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "manyImg": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "authorImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "authorFacebook": {
+      "type": "string"
+    },
+    "authorInstagram": {
+      "type": "string"
+    },
+    "authorTwitch": {
+      "type": "string"
+    },
+    "authorDiscord": {
+      "type": "string"
+    },
+    "authorYoutube": {
+      "type": "string"
+    }
+  }
+}
