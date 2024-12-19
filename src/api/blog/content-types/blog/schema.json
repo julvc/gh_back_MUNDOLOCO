@@ -90,6 +90,10 @@
     },
     "authorYoutube": {
       "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }
