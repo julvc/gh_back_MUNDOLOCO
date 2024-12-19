@@ -3,14 +3,16 @@ const slugify = require('slugify');
 module.exports = {
     async beforeCreate(event) {
         const { data } = event.params;
-        if (data.title) {
-            data.slug = slugify(data.title, { lower: true, strict: true });
+        if (data.blogTitle) {
+            // Genera un slug único basado en el título
+            data.slug = slugify(data.blogTitle, { lower: true, strict: true });
         }
     },
     async beforeUpdate(event) {
         const { data } = event.params;
-        if (data.title) {
-            data.slug = slugify(data.title, { lower: true, strict: true });
+        if (data.blogTitle) {
+            // Genera un slug único basado en el título
+            data.slug = slugify(data.blogTitle, { lower: true, strict: true });
         }
     },
 };
