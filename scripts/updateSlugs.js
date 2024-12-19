@@ -6,7 +6,15 @@ module.exports = async ({ strapi }) => {
         // Obtener todos los blogs
         const blogs = await strapi.entityService.findMany('api::blog.blog');
 
+        console.log(`Se encontraron ${blogs.length} blogs para procesar.`);
+
         for (const blog of blogs) {
+            // Verificar si blogTitle está definido y no es vacío
+            if (!blog.blogTitle) {
+                console.warn(`El blog con ID ${blog.id} no tiene un blogTitle definido.`);
+                continue;
+            }
+
             // Si el slug está vacío o es igual al blogTitle (no formateado)
             if (!blog.slug || blog.slug === blog.blogTitle) {
                 const newSlug = slugify(blog.blogTitle, { lower: true, strict: true });
@@ -17,6 +25,8 @@ module.exports = async ({ strapi }) => {
                 });
 
                 console.log(`Slug actualizado para el blog con ID ${blog.id}: ${newSlug}`);
+            } else {
+                console.log(`El blog con ID ${blog.id} ya tiene un slug válido: ${blog.slug}`);
             }
         }
 
