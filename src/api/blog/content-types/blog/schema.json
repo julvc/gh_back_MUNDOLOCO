@@ -93,7 +93,14 @@
     },
     "slug": {
       "type": "string",
-      "unique": true
+      "unique": true,
+      "config": {
+        "slugify": {
+          "source": "blogTitle",
+          "lowercase": true,
+          "separator": "-"
+        }
+      }
     }
   }
 }
