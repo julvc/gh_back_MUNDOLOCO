@@ -13,7 +13,6 @@ export default factories.createCoreService('api::blog.blog', ({ strapi }) => ({
             data.slug = slugify(data.title, {
                 lower: true,
                 replacement: '-',
-                remove: /[^a-z0-9]+/g,
                 trim: true
             });
         }
